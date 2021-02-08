@@ -47,14 +47,3 @@ use yii\widgets\LinkPager;
         </table>
     </div>
 </div>
-
-<!--<div class="container">-->
-<!--    --><?php
-//    /** @var User $one */
-//    $i = 1;
-//    foreach ($dataProvider->models as $one) :?>
-<!--    <h4>--><?//=$i?><!--  (--><?//=$one->id?><!--)</h4>-->
-<!--    --><?php
-//    $i++;
-//    endforeach; ?>
-<!--</div>-->

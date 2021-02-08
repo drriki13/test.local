@@ -8,7 +8,7 @@ use yii\widgets\ActiveForm;
 ?>
 
 <div class="container">
-    <h3>Фильтрация и поиск</h3>
+    <h1>Фильтрация и поиск</h1>
     <?php
     /** @var ActiveForm $form */
     $form = ActiveForm::begin([

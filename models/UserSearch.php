@@ -26,6 +26,19 @@ class UserSearch extends User
         ];
     }
 
+    public function attributeLabels()
+    {
+        return [
+            'name' => 'Имя',
+            'last_name' => 'Фамилия',
+            'age' => 'Возраст',
+            'salary' => 'Зарплата',
+            'email' => 'E-mail',
+            'code' => 'Серия',
+            'number' => 'Номер',
+        ];
+    }
+
     /**
      * {@inheritdoc}
      */
