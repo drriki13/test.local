@@ -1,5 +1,6 @@
 <?php
 
+use app\assets\SiteIndexAsset;
 use app\components\widgets\NameWidget;
 use app\models\interfaces\IHaveName;
 use yii\helpers\Url;
@@ -8,6 +9,8 @@ use yii\helpers\Url;
 /** @var IHaveName[] $users */
 /** @var IHaveName[] $gangsters */
 /** @var IHaveName[] $guns */
+
+SiteIndexAsset::register($this);
 
 $this->title = 'My Yii Application';
 ?>
