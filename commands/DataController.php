@@ -4,7 +4,9 @@ namespace app\commands;
 
 use app\components\creater\PassportCreater;
 use app\components\creater\UserCreater;
+use app\models\Category;
 use app\models\Passport;
+use Faker\Factory;
 use yii\console\Controller;
 use yii\console\ExitCode;
 use yii\db\ActiveRecord;
@@ -21,9 +23,6 @@ class DataController extends Controller
         echo $record->getFirstError();
     }
 
-    /**
-     * @return int
-     */
     public function actionAdd()
     {
         $successUser = 0;
@@ -46,5 +45,28 @@ class DataController extends Controller
         }
         echo "Все ok" . PHP_EOL;
         echo PHP_EOL . ' Добавленно: ' . $successUser . ' пользователей';
+    }
+
+    public function actionAddCategory()
+    {
+        for ($i = 0; $i < 100; $i++)
+        {
+            $f = Factory::create('ru_RU');
+            $category = new Category();
+            $category->name = $f->text(10);
+            $category->status = 1;
+            $category->save();
+        }
+    }
+
+    public function actionAddProduct()
+    {
+        $f = Factory::create('ru_RU');
+
+    }
+
+    public function actionAddOrder()
+    {
+
     }
 }

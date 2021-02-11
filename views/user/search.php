@@ -1,11 +1,11 @@
 <?php
 
-
 use app\assets\TestAsset;
 use app\assets\UserSearchPageAsset;
+use app\components\widgets\AgeMenuWidget;
 use app\components\widgets\HeadWidget;
 use app\models\UserSearch;
-use app\widgets\TeamWidgets;
+use app\widgets\TestWidgets;
 use yii\data\ActiveDataProvider;
 use yii\web\View;
 use yii\widgets\LinkPager;
@@ -24,8 +24,6 @@ UserSearchPageAsset::register($this);
 //    'message' => 'Какой то текст...',
 //    'desc' => '12313',
 //]);
-
-echo TeamWidgets::widget();
 
 echo $this->render('_form_search', ['userSearch' => $userSearch]);
 echo $this->render('_user_search', ['dataProvider' => $dataProvider]);

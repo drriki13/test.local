@@ -95,4 +95,20 @@ class UserController extends Controller
             'user' => $user,
         ]);
     }
+
+    public function actionAge(int $id, string $name, int $age)
+    {
+        $users = User::find()->where(['age' => $age])->all();
+        return $this->render('age', [
+           'users' => $users,
+        ]);
+    }
+
+    public function actionArt()
+    {
+        $users = User::find()->successful()->adult()->all();
+
+        $a = 1;
+        die();
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace app\models;
 
+use app\models\interfaces\IHaveName;
 use Yii;
 
 /**

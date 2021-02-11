@@ -18,6 +18,7 @@ use yii\widgets\ActiveForm;
         <?= $form->field($user, 'name') ?>
         <?= $form->field($user, 'last_name') ?>
         <?= $form->field($user, 'age') ?>
+        <?= $form->field($user, 'phone') ?>
         <?= $form->field($user, 'email')->Input('email') ?>
         <?= $form->field($user, 'password')->passwordInput() ?>
 

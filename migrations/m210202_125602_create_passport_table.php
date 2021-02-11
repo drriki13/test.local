@@ -15,7 +15,7 @@ class m210202_125602_create_passport_table extends Migration
         $this->createTable('{{%passport}}', [
             'id' => $this->primaryKey(),
             'number' => $this->integer(),
-            'user_id' => $this->integer(),
+            'user_id' => $this->integer()->unique(),
             'code' => $this->integer(),
             'address' => $this->string(),
             'city' => $this->string(),
@@ -29,7 +29,7 @@ class m210202_125602_create_passport_table extends Migration
             'user_id',
             'user',
             'id',
-            'cascade'
+            'cascade',
         );
     }
 

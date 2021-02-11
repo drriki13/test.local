@@ -12,10 +12,18 @@ $config = [
         '@bower' => '@vendor/bower-asset',
         '@npm'   => '@vendor/npm-asset',
     ],
+    'modules' => [
+        'test' => [
+            'class' => 'app\modules\test\Module',
+        ],
+    ],
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
             'cookieValidationKey' => 'CRj--gJ6sF4Yxnw0KxYJ_F8vqMYKmaQz',
+        ],
+        'assetManager' => [
+            'linkAssets' => true,
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -50,7 +58,8 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '/contact' => 'user/test-user',
-                '/user/<id:\d+>' => 'user/view'
+                '/user/<id:\d+>' => 'user/view',
+                'abc' => 'user/search',
             ],
         ],
 

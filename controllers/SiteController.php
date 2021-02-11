@@ -4,6 +4,10 @@ namespace app\controllers;
 
 use app\components\creater\PassportCreater;
 use app\components\creater\UserCreater;
+use app\models\Gangster;
+use app\models\Gun;
+use app\models\Team;
+use app\models\User;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\filters\AccessControl;
@@ -64,9 +68,14 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-
-       $a = 1;
-        return $this->render('index');
+        $users = User::find()->limit(10)->all();
+        $gangsters = Gangster::find()->all();
+        $guns = Gun::find()->all();
+        return $this->render('index', [
+            'users' => $users,
+            'gangsters' => $gangsters,
+            'guns' => $guns,
+        ]);
     }
 
     /**

@@ -39,8 +39,19 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
+            ['label' => 'User', 'items' => [
+                    ['label' => 'User', 'url' => '/user/index'],
+                    ['label' => 'UserSearch', 'url' => '/user/search'],
+                    ['label' => 'AddUser', 'url' => '/user/create'],
+            ]],
+            ['label' => 'Gangster', 'items' => [
+                ['label' => 'Gangster', 'url' => '/gangster/index'],
+                ['label' => 'GangsterSearch', 'url' => '/gangster/search'],
+            ]],
+            ['label' => 'Модули', 'items' => [
+                ['label' => 'Test', 'url' => '/test/default/'],
+                ['label' => 'Mandarin', 'url' => '/test/default/mandarin'],
+            ]],
             Yii::$app->user->isGuest ? (
                 ['label' => 'Login', 'url' => ['/site/login']]
             ) : (

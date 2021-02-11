@@ -25,6 +25,6 @@ use yii\helpers\Url;
         <?php endif;?>
     </div>
     <div class="row">
-        <a href="<?= Url::toRoute(['user/search'])?>">Назад</a>
+        <a href="<?= yii::$app->request->referrer;?>">Назад</a>
     </div>
 </div>

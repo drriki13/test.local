@@ -1,5 +1,6 @@
 <?php
 
+use app\components\widgets\AgeMenuWidget;
 use app\models\UserSearch;
 use yii\helpers\Url;
 use yii\widgets\ActiveForm;
@@ -9,6 +10,7 @@ use yii\widgets\ActiveForm;
 
 <div class="container">
     <h1>Фильтрация и поиск</h1>
+    <div class="row"><?= AgeMenuWidget::widget();?></div>
     <?php
     /** @var ActiveForm $form */
     $form = ActiveForm::begin([
