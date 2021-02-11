@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Gangster;
+use app\models\Gun;
 use yii\helpers\Html;
 use yii\web\View;
 use yii\widgets\ActiveForm;
@@ -20,6 +21,11 @@ use yii\widgets\ActiveForm;
     <?= $form->field($gangster, 'nickname')->textInput();?>
 
     <?= $form->field($gangster, 'city')->textInput();?>
+
+    <?= $form->field($gangster, 'idWeapon')->dropDownList(
+        Gun::getEmtyWeaponList(),
+        ['prompt' => 'Без оружия']
+    );?>
 
     <?= $form->field($gangster, 'status')->dropDownList(Gangster::getStatusList());?>
 

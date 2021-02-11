@@ -5,6 +5,7 @@ namespace app\controllers;
 
 use app\models\Gangster;
 use app\models\GangsterSearch;
+use app\models\Gun;
 use Yii;
 use yii\data\Pagination;
 use yii\web\Controller;
@@ -43,6 +44,7 @@ class GangsterController extends Controller
         $gangster = new Gangster();
 
         if ($gangster->load(Yii::$app->request->post()) && $gangster->save()) {
+            Gun::setWeapon($gangster->idWeapon, $gangster->id);
             return $this->redirect(['view', 'id' => $gangster->id]);
         }
 
@@ -71,6 +73,7 @@ class GangsterController extends Controller
         $gangster = Gangster::find()->where(['id' => $id])->one();
 
         if ($gangster->load(Yii::$app->request->post()) && $gangster->save()) {
+            Gun::setWeapon($gangster->idWeapon, $gangster->id);
             return $this->redirect(['view', 'id' => $gangster->id]);
         }
 

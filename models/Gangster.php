@@ -22,6 +22,9 @@ use Yii;
  */
 class Gangster extends \yii\db\ActiveRecord implements IHaveName
 {
+    /** @var integer */
+    public $idWeapon;
+
     /**
      * {@inheritdoc}
      */
@@ -40,6 +43,7 @@ class Gangster extends \yii\db\ActiveRecord implements IHaveName
             [['created_at', 'updated_at'], 'safe'],
             [['name', 'last_name', 'nickname', 'city'], 'string', 'max' => 255],
             [['nickname'], 'unique'],
+            [['idWeapon'], 'safe'],
         ];
     }
 
@@ -54,6 +58,7 @@ class Gangster extends \yii\db\ActiveRecord implements IHaveName
             'last_name' => 'Фамилия',
             'nickname' => 'Прозвище',
             'city' => 'Город',
+            'idWeapon' => 'Оружие',
             'status' => 'Статус',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',

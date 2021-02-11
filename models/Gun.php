@@ -58,9 +58,24 @@ class Gun extends \yii\db\ActiveRecord implements IHaveName
         ];
     }
 
+    public static function setWeapon($idWeapon, $idGangster)
+    {
+        $emtyGun = Gun::find()->where(['=', 'id', $idWeapon])->one();
+        $emtyGun->gangster_id = $idGangster;
+        $emtyGun->save();
+    }
+
     public static function getWeaponList()
     {
        return Gun::find()->select(['name'])->indexBy('name')->column();
+    }
+
+    public static function getEmtyWeaponList()
+    {
+        return Gun::find()->select(['name', 'id'])
+            ->where(['is', 'gangster_id', null])
+            ->indexBy('id')
+            ->column();
     }
 
     public static function getTypeList()
