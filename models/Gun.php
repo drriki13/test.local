@@ -60,9 +60,9 @@ class Gun extends \yii\db\ActiveRecord implements IHaveName
 
     public static function setWeapon($idWeapon, $idGangster)
     {
-        $emtyGun = Gun::find()->where(['=', 'id', $idWeapon])->one();
-        $emtyGun->gangster_id = $idGangster;
-        $emtyGun->save();
+        $gun = Gun::find()->where(['=', 'id', $idWeapon])->one();
+        $gun->gangster_id = $idGangster;
+        $gun->save();
     }
 
     public static function getWeaponList()

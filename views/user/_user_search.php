@@ -1,6 +1,7 @@
 <?php
 
 use app\models\User;
+use app\modules\test\widgets\ControlPanelWidgets;
 use yii\captcha\Captcha;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
@@ -43,7 +44,7 @@ use yii\widgets\LinkPager;
                         <td></td>
                         <td></td>
                     <?php endif;?>
-                    <td><a href="<?= Url::toRoute(['user/view', 'id' => $user->id])?>">Просмотр</a></td>
+                    <td><?= ControlPanelWidgets::widget(['model' => $user])?></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

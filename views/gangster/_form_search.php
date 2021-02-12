@@ -19,6 +19,7 @@ use yii\widgets\ActiveForm;
     $form = ActiveForm::begin([
         'action' => ['/gangster/search'],
         'method' => 'GET',
+        'options' => ['data-pjax' => 1],
     ]); ?>
     <div class="row">
         <div class="col-sm-6 col-md-2"> <?= $form->field($gangsterSearch, 'name')->textInput() ?></div>
@@ -48,9 +49,9 @@ use yii\widgets\ActiveForm;
     </div>
     <div class="row">
         <div class="col-sm-6 col-md-6">
-            <a class="btn btn-primary" data-pjax="0" href="<?= Url::to(['/gangster/create']) ?>">Добавить гангстера</a>
+            <a class="btn btn-primary" href="<?= Url::to(['/gangster/create']) ?>">Добавить гангстера</a>
             <button type="submit" class="btn btn-success">Применить фильтры</button>
-            <a class="btn btn-warning" data-pjax="0" href="<?= Url::to(['/gangster/search']) ?>">Сбросить фильтры</a>
+            <a class="btn btn-warning" href="<?= Url::to(['/gangster/search']) ?>">Сбросить фильтры</a>
         </div>
     </div>
     <?php ActiveForm::end(); ?>

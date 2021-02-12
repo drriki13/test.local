@@ -11,6 +11,7 @@ use app\models\User;
 use Yii;
 use yii\db\ActiveRecord;
 use yii\filters\AccessControl;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
@@ -137,6 +138,27 @@ class SiteController extends Controller
      */
     public function actionAbout()
     {
+        return $this->render('about');
+    }
+
+    public function actionT()
+    {
+        $users = User::find()->/*asArray()->*/limit(20)->all();
+        //$email = ArrayHelper::getColumn($users, 'email');
+        //$email = ArrayHelper::index($users, 'email');
+        //$email = ArrayHelper::index($users, 'email', 'name');
+        //ArrayHelper::multisort($users, ['age', 'name'], [SORT_ASC, SORT_DESC]);
+        //$users = ArrayHelper::map($users, 'name', 'name');
+        $users = ArrayHelper::toArray($users,[
+            User::class =>[
+                'id',
+                'name',
+                'age',
+            ]
+        ]);
+
+        debug($users); die;
+
         return $this->render('about');
     }
 }

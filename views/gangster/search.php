@@ -9,7 +9,7 @@ use yii\widgets\LinkPager;
 /** @var ActiveDataProvider $dataProvider */
 /** @var View $this */
 ?>
-
+<?php \yii\widgets\Pjax::begin(['timeout' => 10000])?>
 <?= $this->render('_form_search', ['gangsterSearch' => $gangsterSearch]);?>
 <?= $this->render('_gangster_search', ['dataProvider' => $dataProvider]);?>
 
@@ -20,4 +20,5 @@ use yii\widgets\LinkPager;
     ]);
     ?>
 </div>
+<?php \yii\widgets\Pjax::end()?>
 

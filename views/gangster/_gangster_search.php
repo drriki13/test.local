@@ -1,12 +1,17 @@
 <?php
 
+use app\assets\DieAsset;
 use app\models\Gangster;
+use app\modules\test\widgets\ControlPanelWidgets;
+use app\modules\test\widgets\SelectClassWidget;
 use yii\data\ActiveDataProvider;
 use yii\helpers\Url;
 use yii\web\View;
 
 /** @var ActiveDataProvider $dataProvider */
 /** @var View $this */
+
+DieAsset::register($this);
 ?>
 
 <div class="container">
@@ -40,11 +45,14 @@ use yii\web\View;
                     <?php else: ?>
                         <td>Нет оружия</td>
                     <?php endif; ?>
-                    <td><?= Gangster::getStatus($gangster->status)?></td>
+                    <td class="<?= SelectClassWidget::widget(['status' => $gangster->status])?>">
+                        <?= Gangster::getStatus($gangster->status)?>
+                    </td>
                     <td>
-                        <a href="<?= Url::toRoute(['gangster/view', 'id' => $gangster->id])?>" class="btn btn-success">Подробно</a>
-                        <a href="<?= Url::toRoute(['gangster/update', 'id' => $gangster->id])?>" class="btn btn-primary">Редактировать</a>
-                        <a href="<?= Url::toRoute(['gangster/delete', 'id' => $gangster->id])?>" class="btn btn-danger">Удалить</a>
+<!--                        <a href="--><?//= Url::toRoute(['gangster/view', 'id' => $gangster->id])?><!--" class="btn btn-success">Подробно</a>-->
+<!--                        <a href="--><?//= Url::toRoute(['gangster/update', 'id' => $gangster->id])?><!--" class="btn btn-primary">Редактировать</a>-->
+<!--                        <a href="--><?//= Url::toRoute(['gangster/delete', 'id' => $gangster->id])?><!--" class="btn btn-danger">Удалить</a>-->
+                    <?= ControlPanelWidgets::widget(['model' => $gangster])?>
                     </td>
                 </tr>
             <?php endforeach; ?>

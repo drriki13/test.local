@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Gangster;
+use app\modules\test\widgets\ControlPanelWidgets;
 use yii\data\Pagination;
 use yii\helpers\Url;
 use yii\web\View;
@@ -40,9 +41,7 @@ use yii\widgets\LinkPager;
                         <td>Нет оружия</td>
                     <?php endif;?>
                     <td>
-                        <a href="<?= Url::toRoute(['gangster/view', 'id' => $gangster->id])?>" class="btn btn-success">Подробно</a>
-                        <a href="<?= Url::toRoute(['gangster/update', 'id' => $gangster->id])?>" class="btn btn-primary">Редактировать</a>
-                        <a href="<?= Url::toRoute(['gangster/delete', 'id' => $gangster->id])?>" class="btn btn-danger">Удалить</a>
+                        <?= ControlPanelWidgets::widget(['model' => $gangster])?>
                     </td>
                 </tr>
             <?php endforeach; ?>

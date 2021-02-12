@@ -28,7 +28,7 @@ class TestController extends Controller
         $chalk = new Chalk();
         $boy = new Boy();
 
-        $boy->takeInHand($chalk)->writeText('какой то текст...');
+        $boy->takeInHand($chalk)->writeText(Boy::class);
 
         die;
     }
