@@ -26,9 +26,9 @@ use yii\widgets\ActiveForm;
     </div>
     <div class="row">
         <div class="col-sm-6 col-md-6">
-            <a class="btn btn-primary" href="<?= Url::to(['/order/create']) ?>">Добавить гангстера</a>
+            <a class="btn btn-primary" href="<?= Url::to(['/order/create']) ?>">Добавить заказ</a>
             <button type="submit" class="btn btn-success">Применить фильтры</button>
-            <a class="btn btn-warning" href="<?= Url::to(['/order/search']) ?>">Сбросить фильтры</a>
+            <a class="btn btn-warning" href="<?= Url::to(['/order/index']) ?>">Сбросить фильтры</a>
         </div>
     </div>
     <?php ActiveForm::end(); ?>

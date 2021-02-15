@@ -17,7 +17,7 @@ use yii\widgets\LinkPager;
 //!Как бы наследуеться в $depends у UserSearchPageAsset и вызывать его не нужно
 //TestAsset::register($this);
 
-UserSearchPageAsset::register($this);
+//UserSearchPageAsset::register($this);
 
 //Вызов виджета с параметрами
 //echo HeadWidget::widget([

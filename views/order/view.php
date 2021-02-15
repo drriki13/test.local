@@ -8,7 +8,7 @@ use yii\helpers\Url;
 
 <div class="container">
     <div class="row">
-        <h1>Гангстер:</h1>
+        <h1>Заказ:</h1>
         <h4>Имя: <?= $order->status ?></h4>
         <h4>Фамилия: <?= $order->total_price ?></h4>
     </div>

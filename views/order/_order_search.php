@@ -1,6 +1,7 @@
 <?php
 
 use app\models\Order;
+use app\models\Product;
 use app\modules\test\widgets\ControlPanelWidgets;
 use yii\data\ActiveDataProvider;
 use yii\web\View;
@@ -10,12 +11,14 @@ use yii\web\View;
 ?>
 
 <div class="container">
-    <h3>Гангстеры:</h3>
+    <h3>Заказы:</h3>
     <div class="row">
         <table class="table table-bordered">
             <thead>
             <tr>
                 <th scope="col">ID</th>
+                <th scope="col">Email</th>
+                <th scope="col">Category</th>
                 <th scope="col">Name</th>
                 <th scope="col">Price</th>
                 <th scope="col">Status</th>
@@ -25,12 +28,17 @@ use yii\web\View;
             </thead>
             <tbody>
             <?php $orders = $dataProvider->models;
-            /** @var Order $orders */
+            /** @var Order $order */
             foreach ($orders as $order) :?>
                 <tr>
                     <th scope="row"><?= $order->id ?></th>
-                    <td><?= $order->products->name ?></td>
-                    <td><?= $order->products->price ?></td>
+                    <th scope="row"><?= $order->user->email ?></th>
+                    <?php /** @var Product $product */
+                    foreach ($order->products as $product) :?>
+                        <th scope="row"><?= $product->category->name ?></th>
+                        <td><?= $product->name ?></td>
+                        <td><?= $product->price ?></td>
+                    <?php endforeach; ?>
                     <td><?= $order->status ?></td>
                     <td><?= $order->total_price ?></td>
                     <td>

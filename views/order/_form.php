@@ -9,7 +9,7 @@ use yii\widgets\ActiveForm;
 /** @var Order $order */
 ?>
 
-<div class="gangster-form">
+<div class="order-form">
 
     <?php $form = ActiveForm::begin(); ?>
 

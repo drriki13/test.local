@@ -59,7 +59,7 @@ $config = [
             'rules' => [
                 '/contact' => 'user/test-user',
                 '/user/<id:\d+>' => 'user/view',
-                'abc' => 'user/search',
+                '/user/order/<id:\d+>' => 'user/order'
             ],
         ],
 

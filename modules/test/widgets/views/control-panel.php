@@ -1,8 +1,9 @@
 <?php
 
+use yii\base\Model;
 use yii\helpers\Url;
 
-/** @var \yii\base\Model $model */
+/** @var Model $model */
 
 $array = explode("\\", get_class($model));
 $className = mb_strtolower(end($array));
