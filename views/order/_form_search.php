@@ -19,6 +19,9 @@ use yii\widgets\ActiveForm;
         'options' => ['data-pjax' => 1],
     ]); ?>
     <div class="row">
+        <div class="col-sm-6 col-md-2"> <?= $form->field($orderSearch, 'userEmail')->textInput() ?></div>
+        <div class="col-sm-6 col-md-2"> <?= $form->field($orderSearch, 'categoryName')->textInput() ?></div>
+        <div class="col-sm-6 col-md-2"> <?= $form->field($orderSearch, 'productName')->textInput() ?></div>
         <div class="col-sm-6 col-md-2"> <?= $form->field($orderSearch, 'status')->textInput() ?></div>
         <div class="col-sm-6 col-md-2"> <?= $form->field($orderSearch, 'total_price')->textInput() ?></div>
         <div class="col-sm-6 col-md-2">

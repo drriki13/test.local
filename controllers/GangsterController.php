@@ -8,10 +8,20 @@ use app\models\GangsterSearch;
 use app\models\Gun;
 use Yii;
 use yii\data\Pagination;
+use yii\helpers\ArrayHelper;
 use yii\web\Controller;
+use yii\web\Response;
 
 class GangsterController extends Controller
 {
+    public function beforeAction($action)
+    {
+        if (in_array($action->id, ['reverse-status', 'random-gangster'])) {
+            $this->enableCsrfValidation = false;
+        }
+        return parent::beforeAction($action);
+    }
+
     public function actionIndex()
     {
         $query = Gangster::find()->with('gun');
@@ -37,6 +47,74 @@ class GangsterController extends Controller
                 'gangsterSearch' => $gangsterSearch,
                 'dataProvider' => $dataProvider,
             ]);
+    }
+
+    public function actionReverseStatus(int $id = null)
+    {
+        //sleep(3);
+        $js = false;
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        if ($id == null){
+            $js = true;
+            $id = yii::$app->request->post('id');
+        }
+
+        $success = true;
+        $error = null;
+
+        /** @var Gangster $gangster */
+        $gangster = Gangster::find()->where(['id' => $id])->one();
+
+        $gangster->status = (int)!$gangster->status;
+
+        if(!$gangster->save()){
+            $firstErrorAsArray = $gangster->firstErrors;
+            $firstKey = array_key_first($firstErrorAsArray);
+            $error = $firstErrorAsArray[$firstKey];
+            $success = false;
+        }
+        if($js){
+            return [
+                'error' => $error,
+                'success' => $success,
+                'status' => Gangster::getStatus($gangster->status)
+            ];
+        }else{
+            return $this->redirect('/gangster/index/');
+        }
+    }
+
+    public function actionRandomGangster(int $id = null)
+    {
+        $js = false;
+
+        Yii::$app->response->format = Response::FORMAT_JSON;
+        if ($id == null){
+            $js = true;
+            $id = yii::$app->request->post('id');
+        }
+
+        $success = true;
+        $error = null;
+
+        $gangster = Gangster::randomizeGangster($id);
+
+        if(!$gangster->save()){
+            $firstErrorAsArray = $gangster->firstErrors;
+            $firstKey = array_key_first($firstErrorAsArray);
+            $error = $firstErrorAsArray[$firstKey];
+            $success = false;
+        }
+        if($js){
+            return [
+                'error' => $error,
+                'success' => $success,
+                'view' => $this->renderAjax('_card', ['gangster' => $gangster]),
+            ];
+        }else{
+            return $this->redirect('/gangster/index/');
+        }
     }
 
     public function actionCreate()

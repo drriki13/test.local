@@ -1,5 +1,6 @@
 <?php
 
+use app\assets\UserAsset;
 use app\models\User;
 use yii\data\Pagination;
 use yii\web\View;
@@ -9,6 +10,7 @@ use yii\widgets\LinkPager;
 /** @var View $this */
 /** @var Pagination $pages*/
 
+UserAsset::register($this);
 ?>
 <h1>View for user/index</h1>
 

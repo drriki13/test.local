@@ -38,7 +38,4 @@ use yii\widgets\ActiveForm;
         </div>
     </div>
     <?php ActiveForm::end();?>
-    <div class="alert alert-danger js-user-order-errors" hidden="true" role="alert">
-        Error
-    </div>
 </div>

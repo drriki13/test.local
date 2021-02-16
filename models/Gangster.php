@@ -3,6 +3,7 @@
 namespace app\models;
 
 use app\models\interfaces\IHaveName;
+use Faker\Factory;
 use phpDocumentor\Reflection\Types\This;
 use Yii;
 
@@ -82,6 +83,21 @@ class Gangster extends \yii\db\ActiveRecord implements IHaveName
     {
         $statusLabel = Gangster::getStatusList();
         return $statusLabel[$status];
+    }
+
+    public static function randomizeGangster(int $id)
+    {
+        $faker = Factory::create('ru_RU');
+        /** @var Gangster $gangster */
+        $gangster = Gangster::find()->where(['id' => $id])->one();
+
+        $gangster->name = $faker->firstName;
+        $gangster->last_name = $faker->lastName;
+        $gangster->status = rand(0, 1);
+        $gangster->city = $faker->city;
+        $gangster->nickname = $faker->userName;
+
+        return $gangster;
     }
 
     /**

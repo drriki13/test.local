@@ -11,6 +11,8 @@ use app\models\Order;
  */
 class OrderSearch extends Order
 {
+    public $userEmail;
+    public $categoryName;
     public $productName;
     public $productPrice;
 
@@ -22,7 +24,7 @@ class OrderSearch extends Order
         return [
             [['id', 'user_id', 'product_id', 'status', 'total_price'], 'integer'],
             [['created_at', 'updated_at'], 'safe'],
-            [['productName', 'productPrice'], 'safe'],
+            [['userEmail', 'categoryName', 'productName', 'productPrice'], 'safe'],
         ];
     }
 
@@ -43,7 +45,10 @@ class OrderSearch extends Order
      */
     public function search($params)
     {
-        $query = Order::find()->joinWith('products');
+        $query = Order::find()
+            ->joinWith('products')
+            ->joinWith('products.category')
+            ->joinWith('user');
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
@@ -61,13 +66,16 @@ class OrderSearch extends Order
             'id' => $this->id,
             'user_id' => $this->user_id,
             'product_id' => $this->product_id,
-            'productName' => $this->productName,
             'productPrice' => $this->productPrice,
             'status' => $this->status,
             'total_price' => $this->total_price,
             'created_at' => $this->created_at,
             'updated_at' => $this->updated_at,
         ]);
+
+        $query->andFilterWhere(['like', 'user.email', $this->userEmail]);
+
+        $query->andFilterWhere(['like', 'category.name', $this->categoryName]);
 
         $query->andFilterWhere(['like', 'product.name', $this->productName])
             ->andFilterWhere(['=', 'product.price', $this->productPrice]);

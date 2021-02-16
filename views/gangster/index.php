@@ -1,55 +1,32 @@
 <?php
 
+use app\assets\ReverseStatusGangsterAsset;
 use app\models\Gangster;
-use app\modules\test\widgets\ControlPanelWidgets;
 use yii\data\Pagination;
-use yii\helpers\Url;
 use yii\web\View;
 use yii\widgets\LinkPager;
 
 /** @var Gangster[] $gangsters */
 /** @var Pagination $pages */
 /** @var View $this */
-?>
 
+ReverseStatusGangsterAsset::register($this);
+?>
 <h1>Список гангстеров</h1>
 
 <div class="container">
-    <h3>Гангстеры:</h3>
+    <div class="alert alert-danger js-user-order-errors" hidden="true" role="alert">
+        Error
+    </div>
     <div class="row">
-        <table class="table table-bordered">
-            <thead>
-            <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Имя</th>
-                <th scope="col">Фамилия</th>
-                <th scope="col">Прозвище</th>
-                <th scope="col">Оружие</th>
-                <th scope="col">Panel</th>
-            </tr>
-            </thead>
-            <tbody>
-            <?php foreach ($gangsters as $gangster) :?>
-                <tr>
-                    <th scope="row"><?= $gangster->id ?></th>
-                    <td><?= $gangster->name ?></td>
-                    <td><?= $gangster->last_name ?></td>
-                    <td><?= $gangster->nickname ?></td>
-                    <?php if ($gangster->gun):?>
-                        <td><?= $gangster->gun->name ?></td>
-                    <?php else:?>
-                        <td>Нет оружия</td>
-                    <?php endif;?>
-                    <td>
-                        <?= ControlPanelWidgets::widget(['model' => $gangster])?>
-                    </td>
-                </tr>
-            <?php endforeach; ?>
-            </tbody>
-        </table>
+        <?php /** @var Gangster $gangster */
+        foreach ($gangsters as $gangster) : ?>
+            <div class="block<?= $gangster->id ?>">
+                <?= $this->render('_card', ['gangster' => $gangster]); ?>
+            </div>
+        <?php endforeach; ?>
     </div>
 </div>
-
 <div class="container">
     <?php
     echo LinkPager::widget([

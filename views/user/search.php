@@ -1,11 +1,7 @@
 <?php
 
-use app\assets\TestAsset;
-use app\assets\UserSearchPageAsset;
-use app\components\widgets\AgeMenuWidget;
-use app\components\widgets\HeadWidget;
+use app\assets\UserAsset;
 use app\models\UserSearch;
-use app\widgets\TestWidgets;
 use yii\data\ActiveDataProvider;
 use yii\web\View;
 use yii\widgets\LinkPager;
@@ -14,6 +10,7 @@ use yii\widgets\LinkPager;
 /** @var ActiveDataProvider $dataProvider */
 /** @var View $this */
 
+UserAsset::register($this);
 //!Как бы наследуеться в $depends у UserSearchPageAsset и вызывать его не нужно
 //TestAsset::register($this);
 

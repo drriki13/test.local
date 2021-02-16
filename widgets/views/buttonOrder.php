@@ -9,7 +9,9 @@ use yii\web\View;
 /** @var int $countGangster */
 ?>
 <!--<a class="btn btn-primary order-count" data-pjax="1"  href="--><?//= Url::to(['/user/orders'])?><!--">Заказы (--><?//= $count?><!--)</a>-->
-<a class="btn btn-primary" data-pjax="1"  href="<?= Url::to(['/user/orders'])?>">Заказы (<?= $countOrder?>)</a>
+<a class="btn btn-primary" data-pjax="1"  href="<?= Url::to(['/user/orders'])?>">Заказы
+    <span class="badge"><?= $countOrder?></span>
+</a>
 <p> Всего Users: <?= $countUser?></p>
 <p> Всего Gangsters: <?= $countGangster?></p>
 
