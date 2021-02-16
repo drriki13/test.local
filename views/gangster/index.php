@@ -12,6 +12,7 @@ use yii\widgets\LinkPager;
 
 ReverseStatusGangsterAsset::register($this);
 ?>
+<?php \yii\widgets\Pjax::begin()?>
 <h1>Список гангстеров</h1>
 
 <div class="container">
@@ -34,3 +35,5 @@ ReverseStatusGangsterAsset::register($this);
     ]);
     ?>
 </div>
+<?php \yii\widgets\Pjax::end()?>
+

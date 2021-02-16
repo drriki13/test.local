@@ -1,7 +1,7 @@
 var done = true;
 
 $( document ).ready(function() {
-    $('.container').on('click', '.js-btn-gangster-reverse-status', function(e) {
+    $('body').on('click', '.js-btn-gangster-reverse-status', function(e) {
         e.preventDefault();
 
         let action ='reverse-status';
@@ -15,7 +15,7 @@ $( document ).ready(function() {
         }
     });
 
-    $('.container').on('click', '.js-btn-gangster-random-gangster', function(e) {
+    $('body').on('click', '.js-btn-gangster-random-gangster', function(e) {
         e.preventDefault();
 
         let action ='random-gangster';
