@@ -39,6 +39,7 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => 'Home', 'url' => ['/site/index']],
+            ['label' => 'Crypto', 'url' => ['/crypto/index']],
             ['label' => 'User', 'items' => [
                     ['label' => 'User', 'url' => '/user/index'],
                     ['label' => 'UserSearch', 'url' => '/user/search'],

@@ -123,3 +123,12 @@ a.desc:after {
 .inline li{
     list-style: none;
 }
+
+#cryptoform-currencies>label{
+    margin-right: 15px;
+    margin-top: 7px;
+}
+
+.btn-down{
+    margin-top: 20px;
+}
