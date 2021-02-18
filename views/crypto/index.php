@@ -12,16 +12,11 @@ use yii\web\View;
 
 AjaxCryptoAsset::register($this);
 ?>
-<?php \yii\widgets\Pjax::begin([
-    'timeout' => 10000,
-    'enablePushState' => true,
-])?>
 <div class="container">
     <h1>Crypto / index</h1>
     <?php $form = ActiveForm::begin([
         'action' => '/crypto/index',
         'method' => 'GET',
-        'options' => ['data-pjax' => 1],
     ]) ?>
     <div class="row">
         <div class="col-sm-4">
@@ -36,8 +31,9 @@ AjaxCryptoAsset::register($this);
     </div>
     <?php ActiveForm::end(); ?>
 </div>
-<?= $this->render('_card', [
+<div class="js-ajax-wrap">
+    <?= $this->render('_card', [
         'data' => $data,
         'cryptoForm' => $cryptoForm,
-])?>
-<?php \yii\widgets\Pjax::end()?>
+    ])?>
+</div>

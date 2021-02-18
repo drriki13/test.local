@@ -18,9 +18,9 @@ $(document).ready(function() {
 
 function sendData(data) {
     let url = '/crypto/send-request';
-    $.get(url, data).done(function(data) {
+    $.post(url, data).done(function(data) {
         if (data.success) {
-            $('#js-ajax-wrap-html').html(data.html);
+            $('.js-ajax-wrap').html(data.view);
         }
     });
 }

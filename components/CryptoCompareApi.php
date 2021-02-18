@@ -5,7 +5,6 @@ namespace app\components;
 
 use app\models\CryptoForm;
 use Yii;
-
 use yii\httpclient\Client;
 
 class CryptoCompareApi
