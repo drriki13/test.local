@@ -35,6 +35,37 @@ class Team extends \yii\db\ActiveRecord
     }
 
     /**
+     * @param string $name
+     * @param int|null $id
+     * @return Team
+     * @throws \Exception
+     */
+    public static function сhangeTeam(string $name, int $id = null): Team
+    {
+        if ($id){
+            /** @var Team $team */
+            $team = Team::find()->where(['id' => $id])->one();
+            $team->name = $name;
+        }else{
+            $team = new Team();
+            $team->name = $name;
+        }
+        if (!$team->save())
+            throw new \Exception("Ошибка при сохранении!");
+
+        return $team;
+    }
+
+    /**
+     * @param string $name
+     * @return int
+     */
+    public static function getCountTeam(string $name): int
+    {
+        return Team::find()->where(['name' => $name])->count();
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function attributeLabels()
